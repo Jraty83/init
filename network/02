@@ -1,0 +1,6 @@
+#a)
+ifconfig en0 | awk '/broadcast/{print $6}'
+
+#b)
+#ping -c 1 10.11.255.255
+arp -na | awk '/10.11./{print $2}' | sed 's/[)(]//g'

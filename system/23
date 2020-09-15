@@ -1,0 +1,7 @@
+first add new user "X" (adduser X)
+
+SSH connect:
+> ssh X@ip_address (and type X's password)
+
+Graphic connect:
+> select X on login screen (and type X's password), press "Log in as another user" if needed

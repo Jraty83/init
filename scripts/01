@@ -1,0 +1,8 @@
+#!/bin/bash
+
+grep -w "$1" /etc/passwd | while IFS=':' read USR PSWD USRID GRPID DESC HOMEDIR SHL
+do
+        echo -en "$USR:$USRID:$SHL\n"
+done
+
+#cut -d: -f1,3,7 /etc/passwd

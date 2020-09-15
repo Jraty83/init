@@ -1,0 +1,46 @@
+#!/bin/bash
+
+YELLOW='\033[1;33m'
+GREEN='\033[1;32m'
+BLUE='\033[1;34m'
+RED='\033[1;31m'
+NC='\033[0m'
+
+printf "${BLUE}Hello, want to install Visual Studio Code on your Debian?\n${NC}"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) break;;
+        No ) echo -e "${RED}Sure, stick with Terminal :D${NC}"; exit;;
+    esac
+done
+
+echo -e "\n${YELLOW}01. Updating the packages index and installing the dependencies${NC}"
+read -t 2 -n 1 -s -r -p "Press any key to continue..."
+sudo apt update
+sudo apt install software-properties-common apt-transport-https curl
+
+echo -e "\n${YELLOW}02. Importing the Microsoft GPG key...${NC}"
+read -t 2 -n 1 -s -r -p "Press any key to continue..."
+curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+echo -e "\n${YELLOW}03. Adding the Visual Studio Code repository to your system...${NC}"
+read -t 2 -n 1 -s -r -p "Press any key to continue..."
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+
+echo -e "\n${YELLOW}04. Installing the Visual Studio Code package...${NC}"
+read -t 2 -n 1 -s -r -p "Press any key to continue..."
+sudo apt update
+sudo apt install code
+
+echo -e "\n${GREEN}Visual Studio Code has been installed on your Debian desktop\n${NC}"
+
+printf "${BLUE}Now go ahead and try it, then either Keep it or Remove it?\n${NC}"
+select yn in "Keep" "Remove"; do
+    case $yn in
+        Keep ) echo -e "${GREEN}OK, have fun!${NC}"; exit;;
+        Remove ) break;;
+    esac
+done
+
+sudo apt-get --purge remove code
+echo -e "\n${RED}VSC now uninstalled. If you want to try it again, give this program another go!${NC}"

@@ -1,0 +1,3 @@
+pkill tail
+
+#or get PID with 'ps aux' and use kill PID

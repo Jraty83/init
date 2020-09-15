@@ -1,0 +1,17 @@
+just add this line at the end of /etc/hosts file:
+46.19.122.85	intra.42.fr
+
+#Edit the file like this:
+#
+#Type sudo nano /private/etc/hosts to command line (and enter password)
+#Now, you can add as many entries as needed using the text editor. To navigate the
+#text editor, use the arrow keys to move between lines and hit enter to create a new line.
+#
+#Just as with other operating systems, use the following format:
+#
+#1.2.3.4 yoursite.com
+#
+#Enter each IP address on its own line. For each IP address, you can add multiple hostnames
+#on the same line.
+#
+#To save your changes, type Control + X.

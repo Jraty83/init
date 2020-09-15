@@ -1,0 +1,12 @@
+NAT server 10.60.1.1
+
+#Network Address Translation (NAT) servers are the (automatic) mail guys of Internet
+#data traffic.
+
+#When you connect some device to a local network, a NAT server with its own external
+#address steps in, and acts like everyone under its responsibility has the same address
+#externally, but gives different addresses to all the devices it is working on behalf
+#of internally.
+
+#Your global address appears to be something else to everyone outside of your local
+#network, and a NAT server is sorting out where to redirect your Internet traffic.

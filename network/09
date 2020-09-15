@@ -1,0 +1,5 @@
+163.172.250.12
+or
+163.172.250.13
+
+#nslookup 42.fr | tail -n 5 | awk '/Address/{print $2}'

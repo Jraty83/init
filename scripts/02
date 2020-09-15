@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [ -z $1 ] 
+then
+		echo "usage: ./02 username"
+else
+		user_exists=$(getent passwd $1)
+
+		#If the user doesn't exist, don't need to do anything. 
+		if [ -z "$user_exists" ] 
+		then
+				echo "User $1 does not exist"
+		else
+				#Lock user account:
+				passwd -l $1
+
+				#Backup files from /home/user to /root/DeletedUsers
+				cd /root
+				mkdir -p "DeletedUsers"
+				tar -zcvf /root/DeletedUsers/"$1".tar.gz /home/"$1"
+
+				#Kill any running processes belonging to account being deleted
+				killall -KILL -u $1
+
+				#Remove cron jobs:
+				crontab -r -u $1
+
+				#Delete user account:
+				sudo deluser --remove-home "$1"
+		fi
+fi
